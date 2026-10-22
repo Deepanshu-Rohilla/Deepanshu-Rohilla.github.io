@@ -22,6 +22,10 @@
   --line: #d8d8d0;
   --box: #1d6f52;
   --on-box: #f3f2ed;
+  --cover-1: #2b3a55;
+  --cover-2: #c9a227;
+  --cover-3: #8c2f2b;
+  --cover-ink: #f6f3ea;
   --serif: "Instrument Serif", "Iowan Old Style", Georgia, serif;
   --mono: "Geist Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
 }
@@ -194,7 +198,30 @@ ol.timeline .when { font-size: 12px; color: var(--box); font-variant-numeric: ta
 .refs .muted::before { content: "— "; }
 .small { font-size: 12px; }
 
+/* Reading */
+.books { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; }
+.book { display: grid; grid-template-columns: 64px minmax(0, 1fr); gap: 20px; padding: 16px 0; }
+.book + .book { border-top: 1px dashed var(--line); }
+.cover { width: 64px; height: 92px; display: flex; align-items: flex-end; padding: 7px 6px; box-shadow: 3px 3px 0 var(--line); transition: transform .15s ease; }
+.cover:hover { transform: translate(-1px, -2px); }
+.cover span { font-family: var(--serif); font-size: 11.5px; line-height: 12px; color: var(--cover-ink); }
+.cover.c1 { background: var(--cover-1); }
+.cover.c2 { background: var(--cover-2); }
+.cover.c3 { background: var(--cover-3); }
+.book-body { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+.book-top { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; }
+.book .t { font-family: var(--serif); font-size: 21px; line-height: 26px; border-bottom: 0; }
+.book .t:hover { color: var(--box); }
+.book .date { font-size: 12px; color: var(--ink-2); white-space: nowrap; font-variant-numeric: tabular-nums; }
+.book .by { font-size: 12.5px; color: var(--ink-2); }
+.book .d { font-size: 13px; line-height: 20px; margin-top: 6px; max-width: 62ch; }
+.buy { align-self: flex-start; font-size: 12px; color: var(--box); margin-top: 6px; }
+.buy:hover { text-decoration: underline; text-underline-offset: 3px; }
+
 @media (max-width: 600px) {
+  .book { grid-template-columns: 52px minmax(0, 1fr); gap: 14px; }
+  .cover { width: 52px; height: 76px; }
+  .book-top { flex-direction: column; gap: 0; }
   .post-head h1 { font-size: 34px; line-height: 38px; }
   .prose h2 { font-size: 24px; line-height: 29px; }
   ol.timeline li { grid-template-columns: minmax(0, 1fr); gap: 2px; }
@@ -217,6 +244,7 @@ ol.timeline .when { font-size: 12px; color: var(--box); font-variant-numeric: ta
     <nav aria-label="Main">
       <a href="#home" aria-current="page">home</a><span class="sep">/</span>
       <a href="#writing">writing</a><span class="sep">/</span>
+      <a href="#reading">reading</a><span class="sep">/</span>
       <a href="#about">about</a>
     </nav>
   </header>
@@ -303,6 +331,39 @@ ol.timeline .when { font-size: 12px; color: var(--box); font-variant-numeric: ta
         </a></li>
       </ul>
     </div>
+  </section>
+
+  <section class="sec" id="reading" aria-labelledby="h-reading">
+    <div class="sec-head"><h2 id="h-reading"><span>04</span> reading</h2><span class="muted" style="font-size:12px">books I recommend</span></div>
+    <ul class="books">
+      <li class="book">
+        <a class="cover c1" href="https://www.amazon.com/s?k=Apple+in+China+Patrick+McGee" target="_blank" rel="noopener" aria-hidden="true" tabindex="-1"><span>Apple in China</span></a>
+        <div class="book-body">
+          <div class="book-top"><a class="t link" href="https://www.amazon.com/s?k=Apple+in+China+Patrick+McGee" target="_blank" rel="noopener">Apple in China</a><span class="date">read Sep 2026</span></div>
+          <div class="by">Patrick McGee · 2025</div>
+          <p class="d">How Apple taught China to build at a scale no other country can match, and ended up depending on it. For anyone building hardware, it's a sobering look at what manufacturing know-how is worth and who ends up holding it.</p>
+          <a class="buy" href="https://www.amazon.com/s?k=Apple+in+China+Patrick+McGee" target="_blank" rel="noopener">on amazon ↗</a>
+        </div>
+      </li>
+      <li class="book">
+        <a class="cover c2" href="https://www.amazon.com/s?k=The+Mom+Test+Rob+Fitzpatrick" target="_blank" rel="noopener" aria-hidden="true" tabindex="-1"><span>The Mom Test</span></a>
+        <div class="book-body">
+          <div class="book-top"><a class="t link" href="https://www.amazon.com/s?k=The+Mom+Test+Rob+Fitzpatrick" target="_blank" rel="noopener">The Mom Test</a><span class="date">read Feb 2026</span></div>
+          <div class="by">Rob Fitzpatrick · 2013</div>
+          <p class="d">Short and practical. Ask people about their lives and what they've actually done, not about your idea, because everyone will lie to be nice. I wish I'd read it before my first customer call.</p>
+          <a class="buy" href="https://www.amazon.com/s?k=The+Mom+Test+Rob+Fitzpatrick" target="_blank" rel="noopener">on amazon ↗</a>
+        </div>
+      </li>
+      <li class="book">
+        <a class="cover c3" href="https://www.amazon.com/s?k=The+Hard+Thing+About+Hard+Things+Ben+Horowitz" target="_blank" rel="noopener" aria-hidden="true" tabindex="-1"><span>The Hard Thing About Hard Things</span></a>
+        <div class="book-body">
+          <div class="book-top"><a class="t link" href="https://www.amazon.com/s?k=The+Hard+Thing+About+Hard+Things+Ben+Horowitz" target="_blank" rel="noopener">The Hard Thing About Hard Things</a><span class="date">read Jun 2025</span></div>
+          <div class="by">Ben Horowitz · 2014</div>
+          <p class="d">No recipes, just what it feels like when things go wrong and you're the one who has to decide. The chapters on layoffs, hiring executives and “the struggle” are the ones I go back to.</p>
+          <a class="buy" href="https://www.amazon.com/s?k=The+Hard+Thing+About+Hard+Things+Ben+Horowitz" target="_blank" rel="noopener">on amazon ↗</a>
+        </div>
+      </li>
+    </ul>
   </section>
 
   </div>
