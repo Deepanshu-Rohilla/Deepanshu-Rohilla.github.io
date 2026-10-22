@@ -22,10 +22,6 @@
   --line: #d8d8d0;
   --box: #1d6f52;
   --on-box: #f3f2ed;
-  --cover-1: #2b3a55;
-  --cover-2: #c9a227;
-  --cover-3: #8c2f2b;
-  --cover-ink: #f6f3ea;
   --serif: "Instrument Serif", "Iowan Old Style", Georgia, serif;
   --mono: "Geist Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
 }
@@ -202,12 +198,9 @@ ol.timeline .when { font-size: 12px; color: var(--box); font-variant-numeric: ta
 .books { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; }
 .book { display: grid; grid-template-columns: 64px minmax(0, 1fr); gap: 20px; padding: 16px 0; }
 .book + .book { border-top: 1px dashed var(--line); }
-.cover { width: 64px; height: 92px; display: flex; align-items: flex-end; padding: 7px 6px; box-shadow: 3px 3px 0 var(--line); transition: transform .15s ease; }
+.cover { display: block; width: 64px; align-self: start; box-shadow: 3px 3px 0 var(--line); transition: transform .15s ease; }
 .cover:hover { transform: translate(-1px, -2px); }
-.cover span { font-family: var(--serif); font-size: 11.5px; line-height: 12px; color: var(--cover-ink); }
-.cover.c1 { background: var(--cover-1); }
-.cover.c2 { background: var(--cover-2); }
-.cover.c3 { background: var(--cover-3); }
+.cover img { display: block; width: 100%; height: auto; }
 .book-body { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
 .book-top { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; }
 .book .t { font-family: var(--serif); font-size: 21px; line-height: 26px; border-bottom: 0; }
@@ -220,7 +213,7 @@ ol.timeline .when { font-size: 12px; color: var(--box); font-variant-numeric: ta
 
 @media (max-width: 600px) {
   .book { grid-template-columns: 52px minmax(0, 1fr); gap: 14px; }
-  .cover { width: 52px; height: 76px; }
+  .cover { width: 52px; }
   .book-top { flex-direction: column; gap: 0; }
   .post-head h1 { font-size: 34px; line-height: 38px; }
   .prose h2 { font-size: 24px; line-height: 29px; }
@@ -337,7 +330,7 @@ ol.timeline .when { font-size: 12px; color: var(--box); font-variant-numeric: ta
     <div class="sec-head"><h2 id="h-reading"><span>04</span> reading</h2><span class="muted" style="font-size:12px">books I recommend</span></div>
     <ul class="books">
       <li class="book">
-        <a class="cover c1" href="https://www.amazon.com/s?k=Apple+in+China+Patrick+McGee" target="_blank" rel="noopener" aria-hidden="true" tabindex="-1"><span>Apple in China</span></a>
+        <a class="cover" href="https://www.amazon.com/s?k=Apple+in+China+Patrick+McGee" target="_blank" rel="noopener" aria-hidden="true" tabindex="-1"><img src="img/book-apple.jpg" alt="" width="159" height="240" loading="lazy"></a>
         <div class="book-body">
           <div class="book-top"><a class="t link" href="https://www.amazon.com/s?k=Apple+in+China+Patrick+McGee" target="_blank" rel="noopener">Apple in China</a><span class="date">read Sep 2026</span></div>
           <div class="by">Patrick McGee · 2025</div>
@@ -346,7 +339,7 @@ ol.timeline .when { font-size: 12px; color: var(--box); font-variant-numeric: ta
         </div>
       </li>
       <li class="book">
-        <a class="cover c2" href="https://www.amazon.com/s?k=The+Mom+Test+Rob+Fitzpatrick" target="_blank" rel="noopener" aria-hidden="true" tabindex="-1"><span>The Mom Test</span></a>
+        <a class="cover" href="https://www.amazon.com/s?k=The+Mom+Test+Rob+Fitzpatrick" target="_blank" rel="noopener" aria-hidden="true" tabindex="-1"><img src="img/book-mom.jpg" alt="" width="159" height="240" loading="lazy"></a>
         <div class="book-body">
           <div class="book-top"><a class="t link" href="https://www.amazon.com/s?k=The+Mom+Test+Rob+Fitzpatrick" target="_blank" rel="noopener">The Mom Test</a><span class="date">read Feb 2026</span></div>
           <div class="by">Rob Fitzpatrick · 2013</div>
@@ -355,7 +348,7 @@ ol.timeline .when { font-size: 12px; color: var(--box); font-variant-numeric: ta
         </div>
       </li>
       <li class="book">
-        <a class="cover c3" href="https://www.amazon.com/s?k=The+Hard+Thing+About+Hard+Things+Ben+Horowitz" target="_blank" rel="noopener" aria-hidden="true" tabindex="-1"><span>The Hard Thing About Hard Things</span></a>
+        <a class="cover" href="https://www.amazon.com/s?k=The+Hard+Thing+About+Hard+Things+Ben+Horowitz" target="_blank" rel="noopener" aria-hidden="true" tabindex="-1"><img src="img/book-hard.jpg" alt="" width="159" height="240" loading="lazy"></a>
         <div class="book-body">
           <div class="book-top"><a class="t link" href="https://www.amazon.com/s?k=The+Hard+Thing+About+Hard+Things+Ben+Horowitz" target="_blank" rel="noopener">The Hard Thing About Hard Things</a><span class="date">read Jun 2025</span></div>
           <div class="by">Ben Horowitz · 2014</div>
