@@ -211,6 +211,10 @@ ol.timeline .when { font-size: 12px; color: var(--box); font-variant-numeric: ta
 .buy { align-self: flex-start; font-size: 12px; color: var(--box); margin-top: 6px; }
 .buy:hover { text-decoration: underline; text-underline-offset: 3px; }
 
+.fig.wide { align-self: stretch; }
+.fig.wide img { width: 100%; }
+.prose blockquote { margin: 4px 0; padding: 4px 0 4px 16px; border-left: 2px solid var(--box); font-family: var(--serif); font-size: 23px; line-height: 30px; max-width: 60ch; }
+
 @media (max-width: 600px) {
   .book { grid-template-columns: 52px minmax(0, 1fr); gap: 14px; }
   .cover { width: 52px; }
@@ -328,6 +332,10 @@ ol.timeline .when { font-size: 12px; color: var(--box); font-variant-numeric: ta
           <span class="t">Recursive self-improvement for physical AI<span class="new">essay</span></span><span class="date">Oct 2026</span>
           <span class="d">Everything on a screen has been learned. The physical world is next, and it will be learned in simulation.</span>
         </a></li>
+        <li><a href="#siblings">
+          <span class="t">Two siblings dedicated to improving the world</span><span class="date">Aug 2026</span>
+          <span class="d">On my parents, my sister's graduation from LBSNAA, and the value system we both keep coming back to.</span>
+        </a></li>
       </ul>
     </div>
   </section>
@@ -398,6 +406,40 @@ ol.timeline .when { font-size: 12px; color: var(--box); font-variant-numeric: ta
     <a class="back link" href="#writing">← all writing</a>
   </article>
 
+  <article class="post-view" id="siblings" aria-labelledby="siblings-title" hidden>
+    <a class="back link" href="#writing">← all writing</a>
+
+    <header class="post-head">
+      <p class="kicker">note · family</p>
+      <h1 id="siblings-title">Two siblings dedicated to improving the world</h1>
+      <p class="byline">Deepanshu Rohilla · August 2026 · 2 min read</p>
+    </header>
+
+    <div class="prose">
+      <p class="lede">I believe kids are a reflection of the values their parents live by.</p>
+      <p>My father is an automobile engineer by profession. He has served more than 30 years at Maruti Suzuki in Gurgaon, India. My mother is a headmistress at a school in Gurgaon.</p>
+      <p>I believe my sister and I both picked up the builder mindset and Japanese work ethic from my father, and a value-based, caring nature from my mother.</p>
+      <p>Today, watching my sister graduate alongside super talented bureaucrats, I am optimistic about our nation, and the world at large.</p>
+      <figure class="bbox fig wide">
+        <span class="label">family 1.00</span>
+        <img src="img/lbsnaa-club.jpg" alt="Deepanshu with his mother, father and sister at the LBSNAA Officers' Club" width="1200" height="900" loading="lazy">
+        <figcaption>With my parents and sister at the LBSNAA Officers' Club.</figcaption>
+      </figure>
+      <p>Someone told my dad that it is every parent's dream to attend an IIT convocation, or an LBSNAA convocation. Our parents have attended both.</p>
+      <p>We both keep coming back to our value system:</p>
+      <blockquote>The world, everything around us, was created by another human being.</blockquote>
+      <p>This thought is empowering at two levels. First, so much has been possible in such a short time: flights, banking, highways, rockets. Second, it gives you the freedom to challenge the status quo, since the people who built it were no different from you, imperfect beings.</p>
+      <p>Onto larger milestones and much more impact.</p>
+      <figure class="bbox fig wide">
+        <span class="label">family 1.00</span>
+        <img src="img/lbsnaa-garden.jpg" alt="The family together in the gardens at LBSNAA, Mussoorie" width="1200" height="900" loading="lazy">
+        <figcaption>LBSNAA, Mussoorie.</figcaption>
+      </figure>
+    </div>
+
+    <a class="back link" href="#writing">← all writing</a>
+  </article>
+
   <footer>
     <span>© 2026 Deepanshu Rohilla</span>
     <span>san francisco · no trackers</span>
@@ -407,13 +449,13 @@ ol.timeline .when { font-size: 12px; color: var(--box); font-variant-numeric: ta
 <script>
 (function () {
   var home = document.getElementById('home-view');
-  var post = document.getElementById('rsi');
+  var posts = Array.prototype.slice.call(document.querySelectorAll('article.post-view'));
   function route() {
     var h = location.hash.replace('#', '');
-    var showPost = h === 'rsi';
-    post.hidden = !showPost;
-    home.hidden = showPost;
-    if (showPost) { window.scrollTo(0, 0); return; }
+    var post = posts.filter(function (p) { return p.id === h; })[0];
+    posts.forEach(function (p) { p.hidden = p !== post; });
+    home.hidden = !!post;
+    if (post) { window.scrollTo(0, 0); return; }
     var el = h && document.getElementById(h);
     if (el) el.scrollIntoView(); else window.scrollTo(0, 0);
   }
