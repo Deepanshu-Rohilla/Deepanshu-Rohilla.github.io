@@ -161,19 +161,20 @@ footer { font-size: 12px; color: var(--ink-2); display: flex; justify-content: s
 .prose h3 { margin: 12px 0 0; font-size: 13px; font-weight: 600; color: var(--box); }
 .prose ol { margin: 0; padding-left: 1.6em; display: flex; flex-direction: column; gap: 6px; }
 .prose ol li::marker { color: var(--ink-2); font-size: 12px; }
-.table-wrap { overflow-x: auto; border-top: 1px solid var(--ink); border-bottom: 1px solid var(--ink); }
-table { border-collapse: collapse; width: 100%; min-width: 700px; font-size: 12.5px; line-height: 18px; }
-th { text-align: left; font-weight: 500; color: var(--ink-2); padding: 8px 10px; border-bottom: 1px solid var(--line); }
-td { vertical-align: top; padding: 10px; border-bottom: 1px dashed var(--line); }
-tr:last-child td { border-bottom: 0; }
-td:first-child { font-family: var(--serif); font-size: 20px; line-height: 20px; white-space: nowrap; }
-td.pic { width: 96px; padding-right: 4px; }
-td.pic img, td.pic .slot { display: block; width: 84px; height: 84px; object-fit: cover; }
-td.pic .slot { display: grid; place-items: center; border: 1.5px dashed var(--box); color: var(--box); font-family: var(--serif); font-size: 32px; }
-.pic-col { width: 96px; }
+.table-wrap { overflow-x: auto; margin-top: 4px; }
+table { border-collapse: collapse; width: 100%; min-width: 720px; font-size: 12.5px; line-height: 19px; background: color-mix(in srgb, var(--paper) 80%, transparent); }
+th, td { border: 1px solid var(--ink); padding: 12px 10px; vertical-align: top; text-align: left; }
+th { font-weight: 500; color: var(--ink-2); padding-block: 8px; }
+td p { margin: 0; }
+td p + p { margin-top: 12px; }
+td:first-child { font-family: var(--serif); font-size: 20px; line-height: 20px; white-space: nowrap; width: 64px; }
+td:nth-child(2) { width: 30%; }
+.pic-col, td.pic { width: 148px; }
+td.pic { vertical-align: middle; padding: 12px; }
+td.pic img { display: block; width: 124px; height: auto; }
+td.you { font-weight: 600; color: var(--box); white-space: nowrap; }
+tr.here td { background: color-mix(in srgb, var(--box) 8%, transparent); }
 .sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
-tr.here td { background: color-mix(in srgb, var(--box) 9%, transparent); }
-.you { color: var(--box); white-space: nowrap; }
 .fig { margin: 14px 0 6px; padding: 16px 16px 12px; display: flex; flex-direction: column; gap: 10px; align-self: flex-start; max-width: 100%; }
 .fig img { display: block; max-width: 100%; height: auto; }
 .fig figcaption { font-size: 12px; color: var(--ink-2); }
@@ -343,12 +344,12 @@ ol.timeline .when { font-size: 12px; color: var(--box); font-variant-numeric: ta
       <h2>Every leap forward has come from learning beyond the limits of reality</h2>
       <div class="table-wrap">
         <table>
-          <thead><tr><th>Year</th><th class="pic-col"><span class="sr">Photo</span></th><th>Status quo</th><th>The simulation</th><th>What it unlocked</th></tr></thead>
+          <thead><tr><th>Year</th><th>Status quo</th><th>The simulation</th><th>What it unlocked</th><th class="pic-col"><span class="sr">Photo</span></th></tr></thead>
           <tbody>
-            <tr><td>1969</td><td class="pic"><img src="img/apollo.jpg" alt="Neil Armstrong in the lunar module simulator before Apollo 11" width="240" height="240" loading="lazy"></td><td>Apollo landing procedures had to account for uncertain computer alarms. A wrong abort call could end the mission.</td><td>Simulated lunar landings that rehearsed alarms and abort decisions</td><td>Apollo 11 flew through the real 1201 and 1202 alarms and landed on the Moon</td></tr>
-            <tr><td>2017</td><td class="pic"><img src="img/go.jpg" alt="A Go board during a match against AlphaGo" width="240" height="240" loading="lazy"></td><td>Go AI learned from expert human games, so human knowledge capped the starting point</td><td>AlphaGo Zero played millions of games against itself</td><td>Superhuman play with no human game data</td></tr>
-            <tr><td>2019</td><td class="pic"><img src="img/rubiks.jpg" alt="OpenAI's robot hand holding a Rubik's Cube" width="240" height="240" loading="lazy"></td><td>Robot dexterity depended on real-world experiments, which are slow and expensive</td><td>OpenAI trained a robot hand in simulation, with environments that kept getting more randomized</td><td>A real robot hand solved a Rubik's Cube</td></tr>
-            <tr class="here"><td>2026</td><td class="pic"><span class="slot" aria-hidden="true">?</span></td><td>Robots learn from demonstrations in the physical world. Expensive, slow and dangerous.</td><td>Infinite worlds for robots to learn in</td><td>??? <span class="you">← you are here</span></td></tr>
+            <tr><td>1969</td><td><p>Apollo landing procedures had to account for uncertain computer alarms.</p><p>An incorrect abort decision could jeopardize the mission.</p></td><td>Simulated lunar landings rehearsing alarms and abort decisions</td><td>Apollo 11 continued through the real 1201 and 1202 alarms and landed on the Moon</td><td class="pic"><img src="img/apollo.jpg" alt="Neil Armstrong in the lunar module simulator before Apollo 11" width="300" height="300" loading="lazy"></td></tr>
+            <tr><td>2017</td><td><p>Go AI learned from expert human games.</p><p>Human knowledge limited the starting point for discovery.</p></td><td>AlphaGo Zero played millions of games against itself</td><td>Superhuman play without human game data</td><td class="pic"><img src="img/go.jpg" alt="A Go board mid-game" width="300" height="200" loading="lazy"></td></tr>
+            <tr><td>2019</td><td><p>Robot dexterity depended heavily on real-world experimentation.</p><p>Physical data collection was slow and expensive.</p></td><td>OpenAI trained a robotic hand in simulation with increasingly randomized environments</td><td>A real robot hand manipulated a Rubik's Cube</td><td class="pic"><img src="img/rubiks.jpg" alt="OpenAI's robot hand holding a Rubik's Cube" width="300" height="300" loading="lazy"></td></tr>
+            <tr class="here"><td>2026</td><td><p>Robots learn through demonstrations in the physical world.</p><p>Expensive, slow, and dangerous.</p></td><td>Infinite worlds for robots to learn</td><td>???</td><td class="pic you">← You are here</td></tr>
           </tbody>
         </table>
       </div>
