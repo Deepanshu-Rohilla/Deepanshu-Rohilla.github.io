@@ -162,11 +162,16 @@ footer { font-size: 12px; color: var(--ink-2); display: flex; justify-content: s
 .prose ol { margin: 0; padding-left: 1.6em; display: flex; flex-direction: column; gap: 6px; }
 .prose ol li::marker { color: var(--ink-2); font-size: 12px; }
 .table-wrap { overflow-x: auto; border-top: 1px solid var(--ink); border-bottom: 1px solid var(--ink); }
-table { border-collapse: collapse; width: 100%; min-width: 620px; font-size: 12.5px; line-height: 18px; }
+table { border-collapse: collapse; width: 100%; min-width: 700px; font-size: 12.5px; line-height: 18px; }
 th { text-align: left; font-weight: 500; color: var(--ink-2); padding: 8px 10px; border-bottom: 1px solid var(--line); }
 td { vertical-align: top; padding: 10px; border-bottom: 1px dashed var(--line); }
 tr:last-child td { border-bottom: 0; }
 td:first-child { font-family: var(--serif); font-size: 20px; line-height: 20px; white-space: nowrap; }
+td.pic { width: 96px; padding-right: 4px; }
+td.pic img, td.pic .slot { display: block; width: 84px; height: 84px; object-fit: cover; }
+td.pic .slot { display: grid; place-items: center; border: 1.5px dashed var(--box); color: var(--box); font-family: var(--serif); font-size: 32px; }
+.pic-col { width: 96px; }
+.sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
 tr.here td { background: color-mix(in srgb, var(--box) 9%, transparent); }
 .you { color: var(--box); white-space: nowrap; }
 .fig { margin: 14px 0 6px; padding: 16px 16px 12px; display: flex; flex-direction: column; gap: 10px; align-self: flex-start; max-width: 100%; }
@@ -338,12 +343,12 @@ ol.timeline .when { font-size: 12px; color: var(--box); font-variant-numeric: ta
       <h2>Every leap forward has come from learning beyond the limits of reality</h2>
       <div class="table-wrap">
         <table>
-          <thead><tr><th>Year</th><th>Status quo</th><th>The simulation</th><th>What it unlocked</th></tr></thead>
+          <thead><tr><th>Year</th><th class="pic-col"><span class="sr">Photo</span></th><th>Status quo</th><th>The simulation</th><th>What it unlocked</th></tr></thead>
           <tbody>
-            <tr><td>1969</td><td>Apollo landing procedures had to account for uncertain computer alarms. A wrong abort call could end the mission.</td><td>Simulated lunar landings that rehearsed alarms and abort decisions</td><td>Apollo 11 flew through the real 1201 and 1202 alarms and landed on the Moon</td></tr>
-            <tr><td>2017</td><td>Go AI learned from expert human games, so human knowledge capped the starting point</td><td>AlphaGo Zero played millions of games against itself</td><td>Superhuman play with no human game data</td></tr>
-            <tr><td>2019</td><td>Robot dexterity depended on real-world experiments, which are slow and expensive</td><td>OpenAI trained a robot hand in simulation, with environments that kept getting more randomized</td><td>A real robot hand solved a Rubik's Cube</td></tr>
-            <tr class="here"><td>2026</td><td>Robots learn from demonstrations in the physical world. Expensive, slow and dangerous.</td><td>Infinite worlds for robots to learn in</td><td>??? <span class="you">← you are here</span></td></tr>
+            <tr><td>1969</td><td class="pic"><img src="img/apollo.jpg" alt="Neil Armstrong in the lunar module simulator before Apollo 11" width="240" height="240" loading="lazy"></td><td>Apollo landing procedures had to account for uncertain computer alarms. A wrong abort call could end the mission.</td><td>Simulated lunar landings that rehearsed alarms and abort decisions</td><td>Apollo 11 flew through the real 1201 and 1202 alarms and landed on the Moon</td></tr>
+            <tr><td>2017</td><td class="pic"><img src="img/go.jpg" alt="A Go board during a match against AlphaGo" width="240" height="240" loading="lazy"></td><td>Go AI learned from expert human games, so human knowledge capped the starting point</td><td>AlphaGo Zero played millions of games against itself</td><td>Superhuman play with no human game data</td></tr>
+            <tr><td>2019</td><td class="pic"><img src="img/rubiks.jpg" alt="OpenAI's robot hand holding a Rubik's Cube" width="240" height="240" loading="lazy"></td><td>Robot dexterity depended on real-world experiments, which are slow and expensive</td><td>OpenAI trained a robot hand in simulation, with environments that kept getting more randomized</td><td>A real robot hand solved a Rubik's Cube</td></tr>
+            <tr class="here"><td>2026</td><td class="pic"><span class="slot" aria-hidden="true">?</span></td><td>Robots learn from demonstrations in the physical world. Expensive, slow and dangerous.</td><td>Infinite worlds for robots to learn in</td><td>??? <span class="you">← you are here</span></td></tr>
           </tbody>
         </table>
       </div>
