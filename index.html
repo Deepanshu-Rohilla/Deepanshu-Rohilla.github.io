@@ -279,8 +279,8 @@ ol.timeline .when { font-size: 12px; color: var(--box); font-variant-numeric: ta
       <a class="bbox fcard" href="#rsi">
         <span class="label">essay 0.99</span>
         <span class="t">Recursive self-improvement for physical AI</span>
-        <span class="d">Why robots will learn in simulated worlds, what we built at Argon, and the 300+ behaviours our models discovered on their own.</span>
-        <span class="when">Oct 2026 · 14 min read</span>
+        <span class="d">Every leap forward has come from learning beyond the limits of reality. Robots are next.</span>
+        <span class="when">Oct 2026 · 2 min read</span>
       </a>
     </div>
   </section>
@@ -293,7 +293,7 @@ ol.timeline .when { font-size: 12px; color: var(--box); font-variant-numeric: ta
       <ul class="posts">
         <li><a href="#rsi">
           <span class="t">Recursive self-improvement for physical AI<span class="new">essay</span></span><span class="date">Oct 2026</span>
-          <span class="d">Robots should learn in worlds, not from demonstrations. Our thesis, results, and how we got here.</span>
+          <span class="d">Everything on a screen has been learned. The physical world is next, and it will be learned in simulation.</span>
         </a></li>
         <li><a href="https://x.com/Deepans36819800" target="_blank" rel="noopener">
           <span class="t">Late-breaking results at CoRL</span><span class="date">Oct 17</span>
@@ -327,7 +327,7 @@ ol.timeline .when { font-size: 12px; color: var(--box); font-variant-numeric: ta
     <header class="post-head">
       <p class="kicker">essay · argon robotics</p>
       <h1 id="rsi-title">Recursive self-improvement for physical AI</h1>
-      <p class="byline">Deepanshu Rohilla · October 2026 · 14 min read</p>
+      <p class="byline">Deepanshu Rohilla · October 2026 · 2 min read</p>
     </header>
 
     <div class="prose">
@@ -346,161 +346,6 @@ ol.timeline .when { font-size: 12px; color: var(--box); font-variant-numeric: ta
             <tr class="here"><td>2026</td><td>Robots learn from demonstrations in the physical world. Expensive, slow and dangerous.</td><td>Infinite worlds for robots to learn in</td><td>??? <span class="you">← you are here</span></td></tr>
           </tbody>
         </table>
-      </div>
-
-      <h2>The problem</h2>
-      <p>To get there, physical AI needs recursive self-improvement. That takes two things:</p>
-      <ol>
-        <li>A virtual world where agents can live and learn.</li>
-        <li>A model that improves itself as it works.</li>
-      </ol>
-      <p>The concern with virtual worlds has always been the gap between simulation and reality, in both directions: sim2real and real2sim. That gap is shrinking from both sides. Newer simulations are better, and larger models tolerate whatever gap remains.</p>
-
-      <h2>Proving it on one task</h2>
-      <p>To establish results, we picked dish racking. It has:</p>
-      <ol>
-        <li>Rigid-body interactions, which keep mesh and asset creation simple.</li>
-        <li>A fixed robot body with 6-DoF manipulation.</li>
-        <li>A fixed environment, which limits ray tracing, rendering and asset creation.</li>
-      </ol>
-      <p>The goal is to show that a model can learn in our engine and work zero-shot in the real world. Relaxing each of these constraints is a function of better models and more compute.</p>
-
-      <h3>A. Building the worlds</h3>
-      <p>A virtual world close to reality needs accurate visuals and accurate physics. Visuals depend on accurate assets, environments, preserved proportions and much more. Physics depends on robust ray-tracing engines, strong differential solvers for fluids, and fine-grained meshes for deformable objects.</p>
-      <p>The proof of accurate visuals is a Turing test. Here is one real environment and one sim environment, picked at random from our test runs. We'll leave it to you to guess which is which.</p>
-      <figure class="bbox fig">
-        <span class="label">real 0.50 · sim 0.50</span>
-        <img src="img/image4.jpg" alt="Two overhead views of a dual-arm robot station with plates, one real and one simulated" width="602" height="229" loading="lazy">
-        <figcaption>One is real, one is sim.</figcaption>
-      </figure>
-      <p>Visuals are impressive, but the real Turing test is physics: joint stiffness, contact friction, clipping, measurements. Our team of graphic designers, 3D engineers and physics-engine programmers from game development builds these sims, with help from our in-house agent orchestration engine. Everything feeds a shared memory, so our agents and environments keep getting better over time.</p>
-      <p>Along the way we found close to a dozen bugs in top physics engines from NVIDIA and Google DeepMind, fixed them, and sent the fixes upstream. We also found about 50 other changes that would improve sim generation and open up more complex scenes. Real-world simulation needs a fundamental redesign of today's physics engines, so we've started building our own, called Boron. It already performs better on tasks like shoelace tying.</p>
-
-      <h3>B. Making the model learn</h3>
-      <p>Two techniques do most of the work today.</p>
-      <p><strong>1. GRPO with rejection sampling.</strong> LLMs started improving without humans in the loop largely because of one lever: GRPO, from DeepSeek. The model generates hundreds of attempts, keeps the best, and learns from them. Frontier robotics models haven't unlocked this yet, for two reasons. First, generating hundreds of attempts scalably and autonomously is only possible in simulation. Second, today's robot models are flow-matching models, not autoregressive ones like LLMs, so GRPO doesn't apply directly. You either adapt GRPO to denoising models, or, as we do, train autoregressive models so LLM-style GRPO works as is. That gives us self-improving models.</p>
-      <p><strong>2. DAgger-style intervention without humans.</strong> For the next jump in accuracy, we collect DAgger-style intervention data. Normally, labs deploy robots in the real world and a person steps in to correct them. That's slow, because you can't predict when errors will happen, and the human in the loop limits the pace. Instead, we spawn thousands of worlds and watch the trajectories. Wherever the model fails, we spawn thousands more worlds like that one, so failure modes show up quickly. A frontier model then corrects the trajectory. The model gets unlimited chances to learn.</p>
-
-      <h2>Discovery-0</h2>
-      <p>The model learned that if a plate is stuck at the edge of the rack, it should drop the plate first and pick it up again (<a class="link" href="https://drive.google.com/file/d/1dTEn4CBPbTnaCEi2OHCJcHeeNyk9xWVo/view?usp=sharing" target="_blank" rel="noopener">video</a>):</p>
-      <ol>
-        <li>The plate is stuck at the edge.</li>
-        <li>The arm pushes the plate down.</li>
-        <li>The plate slides down.</li>
-        <li>It's now in the best position to pick.</li>
-      </ol>
-      <p>We traced <strong>more than 300 techniques like this</strong> back to exploration in sim. None of them appeared in any training data, and they worked in the real world. The most striking was the model learning to close a dishwasher.</p>
-      <figure class="bbox fig strip">
-        <span class="label">dishwasher 0.97</span>
-        <div class="frames">
-          <img src="img/image5.jpg" alt="Robot arm reaching for an open dishwasher door" width="108" height="191" loading="lazy">
-          <img src="img/image6.jpg" alt="Robot arm pushing the dishwasher door up" width="107" height="191" loading="lazy">
-          <img src="img/image7.jpg" alt="Dishwasher door closed" width="107" height="191" loading="lazy">
-        </div>
-        <figcaption>Closing a dishwasher, learned in sim. <a class="link" href="https://drive.google.com/file/d/1Iu5KKIDf0cJJ2xepBxaRJcNPaNuVrw6I/view?usp=sharing" target="_blank" rel="noopener">Watch the video</a></figcaption>
-      </figure>
-
-      <h2>How we got here</h2>
-      <ol class="timeline">
-        <li><span class="when">Dec 2025</span><span>Two friends drinking beer after winning a hackathon in Bellandur, Bangalore. The hot topics were RAG and MCP. I was selling vision intelligence to restaurants; Pranay joined and we scaled the CCTV business across India and the US.</span></li>
-        <li><span class="when">Early 2026</span><span>We could see the dustbin overflowing. Could we be a helping hand instead of an alarm? The first step was a robot controlled remotely by a person, made autonomous later. We wanted zero-shot runs at customer sites and tried fine-tuning in sim, but it was too early.</span></li>
-        <li><span class="when">Feb 2026</span><span>We settled on recreating the customer's exact environment in India, collecting teleoperated data there, and running the model zero-shot at the customer. We did our first teleoperation and put a remote-controlled robot live at a site in India.</span></li>
-        <li><span class="when">Aug 2026</span><span>After 4,000 hours of data from Indian sites, we shipped our first autonomous model. It went live in San Francisco at New Delhi Restaurant &amp; Bar and ran zero-shot at the customer's location. The robot worked shifts there.</span></li>
-        <li><span class="when">7 Oct 2026</span><span>We presented this thesis at EF demo day.</span></li>
-        <li><span class="when">13 Oct 2026</span><span>We pivoted.</span></li>
-      </ol>
-      <figure class="bbox fig">
-        <span class="label">sim · feb 2026</span>
-        <img src="img/image9.jpg" alt="Simulated kitchen with a humanoid robot at a counter" width="377" height="211" loading="lazy">
-        <figcaption>Our kitchen sim from February 2026. It wasn't time yet.</figcaption>
-      </figure>
-      <p>As we scaled to more locations and tasks, the approach ran into limits:</p>
-      <ol>
-        <li>Models didn't generalize well, so every location needed fine-tuning and ramp-up.</li>
-        <li>Deployments in India made data collection fast, but iteration was still slow.</li>
-        <li>Corner cases kept getting the models stuck, so people had to step in constantly.</li>
-        <li>You can't engineer every corner case in a physical setting.</li>
-      </ol>
-      <p>Meanwhile, the people we talked to were most interested in our RL engine, both for speed-ups and for failure-checking in sim, where simulation was already good enough for collision detection and simpler checks. We realised that what we built to run our own deployments is far more valuable to frontier labs training their models, and to the deployers who use them. So we became a simulation company.</p>
-
-      <h2>Team</h2>
-      <h3>Founders</h3>
-      <dl class="people">
-        <dt><a class="link" href="https://www.linkedin.com/in/deepanshu-rohilla/" target="_blank" rel="noopener">Deepanshu Rohilla</a>, CEO</dt>
-        <dd>Two-time founder. Previously Chief of Staff to the founder of Ola, often called India's Tesla, where he deployed 1,000+ robots across India for EV servicing. Runs company operations and secures data, compute, and partnerships with universities and frontier labs.</dd>
-        <dt><a class="link" href="https://www.linkedin.com/in/pranay1gupta/" target="_blank" rel="noopener">Pranay Gupta</a>, CTO</dt>
-        <dd>Previously ML Lead at Zomato (India's DoorDash), in the team that became Nugget. Before that, a quant at Da Vinci, where he led India desk strategies.</dd>
-      </dl>
-      <h3>Researchers</h3>
-      <dl class="people">
-        <dt><a class="link" href="https://pranjal2041.github.io/" target="_blank" rel="noopener">Pranjal Aggarwal</a>, PhD at CMU LTI, ex-Meta</dt>
-        <dd>Inventor of GEO, the SEO of AI. His latest work, <a class="link" href="https://cmu-l3.github.io/gym-anything/" target="_blank" rel="noopener">Gym-Anything</a>, built robust environments for computer-use agents and pushed the frontier of what LLMs can do there. We're applying the same approach to robot learning.</dd>
-        <dt><a class="link" href="https://lodino.github.io/" target="_blank" rel="noopener">Jiongli Zhu</a>, PhD at UCSD, incoming at Tesla</dt>
-        <dd>Worked on FSD simulation at Tesla, specialising in mid-training, SFT and RL for the FSD model. We're exploring SFT from frontier models to make robot models more robust in our environments.</dd>
-        <dt><a class="link" href="https://parjanya20.github.io/" target="_blank" rel="noopener">Parjanya Prashant</a>, PhD at UCSD, ex-Meta Superintelligence</dt>
-        <dd>Fine-tuned Qwen and Kimi K3 at Meta for vertical use cases, and built scalable infrastructure for fine-tuning, distillation, training and inference. We're building the same architecture for our training environments.</dd>
-        <dt><a class="link" href="https://himanshusingh.ai/" target="_blank" rel="noopener">Himanshu Gaurav Singh</a>, PhD at UC Berkeley, ex-Amazon</dt>
-        <dd>Author of ABC, an open-source π0.5-style robotics model, advised by Jitendra Malik and Pieter Abbeel. The founders of Skild AI, Physical Intelligence, Covariant and XDOF trace their roots to this group. He's testing our system end to end, from a base model to intelligence emerging from our worlds.</dd>
-      </dl>
-
-      <h2>References</h2>
-      <div class="refs">
-        <h3>General</h3>
-        <ol>
-          <li><a class="link" href="http://www.incompleteideas.net/IncIdeas/BitterLesson.html" target="_blank" rel="noopener">The Bitter Lesson</a> <span class="muted">short enough to reread every quarter, and we do</span></li>
-          <li><a class="link" href="https://en.wikipedia.org/wiki/Moravec%27s_paradox" target="_blank" rel="noopener">Moravec's paradox</a> <span class="muted">still the best one-line description of our problem</span></li>
-          <li><a class="link" href="https://doi.org/10.1016/S0065-2458(08)60418-0" target="_blank" rel="noopener">Speculations Concerning the First Ultraintelligent Machine</a> <span class="muted">I. J. Good, 1965; where recursive self-improvement starts</span></li>
-          <li><a class="link" href="https://storage.googleapis.com/deepmind-media/Era-of-Experience%20/The%20Era%20of%20Experience%20Paper.pdf" target="_blank" rel="noopener">Welcome to the Era of Experience</a> <span class="muted">learning from your own data; a world is the cheapest place to get it</span></li>
-          <li><a class="link" href="http://johnsalvatier.org/blog/2017/reality-has-a-surprising-amount-of-detail" target="_blank" rel="noopener">Reality has a surprising amount of detail</a> <span class="muted">why corner cases can't be engineered away</span></li>
-        </ol>
-        <h3>Simulation and sim-to-real</h3>
-        <ol>
-          <li><a class="link" href="https://arxiv.org/abs/1703.06907" target="_blank" rel="noopener">Domain Randomization</a> <span class="muted">Tobin et al., 2017</span></li>
-          <li><a class="link" href="https://arxiv.org/abs/1808.00177" target="_blank" rel="noopener">Learning Dexterous In-Hand Manipulation</a>; <a class="link" href="https://arxiv.org/abs/1910.07113" target="_blank" rel="noopener">Solving Rubik's Cube with a Robot Hand</a> <span class="muted">a world that gets harder as the policy improves</span></li>
-          <li><a class="link" href="https://arxiv.org/abs/1810.05687" target="_blank" rel="noopener">Closing the Sim-to-Real Loop</a> <span class="muted">re-tune the sim from real rollouts</span></li>
-          <li><a class="link" href="https://arxiv.org/abs/2108.10470" target="_blank" rel="noopener">Isaac Gym</a> <span class="muted">physics and training on one GPU</span></li>
-          <li><a class="link" href="https://arxiv.org/abs/2502.01143" target="_blank" rel="noopener">ASAP</a> <span class="muted">learn what the sim gets wrong; we prefer to hunt for it</span></li>
-        </ol>
-        <h3>Engines and environments</h3>
-        <ol>
-          <li><a class="link" href="https://doi.org/10.1109/IROS.2012.6386109" target="_blank" rel="noopener">MuJoCo</a></li>
-          <li><a class="link" href="https://developer.nvidia.com/blog/announcing-newton-an-open-source-physics-engine-for-robotics-simulation/" target="_blank" rel="noopener">Newton</a> <span class="muted">open GPU physics from NVIDIA, Google DeepMind and Disney Research</span></li>
-          <li><a class="link" href="https://arxiv.org/abs/2003.08515" target="_blank" rel="noopener">SAPIEN</a> <span class="muted">articulated objects: doors, drawers, dishwashers</span></li>
-          <li><a class="link" href="https://arxiv.org/abs/2303.02346" target="_blank" rel="noopener">FluidLab</a> <span class="muted">what we're deliberately not simulating yet</span></li>
-          <li><a class="link" href="https://arxiv.org/abs/2604.06126" target="_blank" rel="noopener">Gym-Anything</a> <span class="muted">any software into a training environment; our closest cousin</span></li>
-          <li><a class="link" href="https://arxiv.org/abs/2310.12931" target="_blank" rel="noopener">Eureka</a> <span class="muted">language models writing rewards that beat human ones</span></li>
-        </ol>
-        <h3>Breaking worlds</h3>
-        <ol>
-          <li><a class="link" href="https://arxiv.org/abs/1901.01753" target="_blank" rel="noopener">POET</a> <span class="muted">environments and agents that evolve together</span></li>
-          <li><a class="link" href="https://arxiv.org/abs/2012.02096" target="_blank" rel="noopener">PAIRED</a> <span class="muted">an adversary that proposes hard but solvable worlds</span></li>
-          <li><a class="link" href="https://arxiv.org/abs/2203.01302" target="_blank" rel="noopener">ACCEL</a> <span class="muted">edit the world instead of regenerating it</span></li>
-          <li><a class="link" href="https://arxiv.org/abs/1909.07528" target="_blank" rel="noopener">Emergent Tool Use From Multi-Agent Autocurricula</a> <span class="muted">the closest precedent for our 300</span></li>
-          <li><a class="link" href="https://arxiv.org/abs/1901.10995" target="_blank" rel="noopener">Go-Explore</a> <span class="muted">remember where you were close, and go back</span></li>
-        </ol>
-        <p class="muted small">PAIRED and ACCEL search for worlds the agent fails in. Our breakers search for places where the world is wrong.</p>
-        <h3>Robot learning</h3>
-        <ol>
-          <li><a class="link" href="https://arxiv.org/abs/2307.15818" target="_blank" rel="noopener">RT-2</a>; <a class="link" href="https://arxiv.org/abs/2310.08864" target="_blank" rel="noopener">Open X-Embodiment</a></li>
-          <li><a class="link" href="https://arxiv.org/abs/2304.13705" target="_blank" rel="noopener">ACT and ALOHA</a> <span class="muted">the cheap rig that got the field collecting teleoperation</span></li>
-          <li><a class="link" href="https://arxiv.org/abs/2504.16054" target="_blank" rel="noopener">π0.5</a> <span class="muted">the strongest case for the human-data route</span></li>
-          <li><a class="link" href="https://arxiv.org/abs/2511.14759" target="_blank" rel="noopener">π*0.6</a> <span class="muted">a human-data lab now training on its robots' own attempts</span></li>
-          <li><a class="link" href="https://arxiv.org/abs/2410.18647" target="_blank" rel="noopener">Data Scaling Laws in Imitation Learning</a> <span class="muted">more environments beat more demos per environment</span></li>
-        </ol>
-        <h3>Self-play and learning without a teacher</h3>
-        <ol>
-          <li><a class="link" href="https://doi.org/10.1038/nature24270" target="_blank" rel="noopener">Mastering the game of Go without human knowledge</a> <span class="muted">the curve we want for robots</span></li>
-          <li><a class="link" href="https://arxiv.org/abs/2501.12948" target="_blank" rel="noopener">DeepSeek-R1</a> <span class="muted">reasoning from reward alone</span></li>
-          <li><a class="link" href="https://arxiv.org/abs/2505.03335" target="_blank" rel="noopener">Absolute Zero</a> <span class="muted">a model that writes its own tasks</span></li>
-          <li><a class="link" href="https://www.nature.com/articles/s41586-024-07711-7" target="_blank" rel="noopener">Loss of plasticity in deep continual learning</a> <span class="muted">the tax on any model that keeps learning</span></li>
-        </ol>
-        <h3>For a long evening</h3>
-        <ol>
-          <li><a class="link" href="https://www.youtube.com/watch?v=_2NijXqBESI" target="_blank" rel="noopener">Jim Fan, The Physical Turing Test</a></li>
-          <li><a class="link" href="https://www.youtube.com/watch?v=zzXyPGEtseI" target="_blank" rel="noopener">David Silver, Is human data enough?</a></li>
-          <li><a class="link" href="https://www.youtube.com/watch?v=21EYKqUsPfg" target="_blank" rel="noopener">Sutton on Dwarkesh</a></li>
-          <li><a class="link" href="https://www.youtube.com/watch?v=x4O8pojMF0w" target="_blank" rel="noopener">OpenAI, Solving Rubik's Cube with a Robot Hand</a></li>
-        </ol>
       </div>
     </div>
 
