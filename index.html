@@ -207,7 +207,17 @@ ol.timeline .when { font-size: 12px; color: var(--box); font-variant-numeric: ta
 .fig.wide img { width: 100%; }
 .prose blockquote { margin: 4px 0; padding: 4px 0 4px 16px; border-left: 2px solid var(--box); font-family: var(--serif); font-size: 23px; line-height: 30px; max-width: 60ch; }
 
+/* Videos */
+.video { grid-template-columns: 128px minmax(0, 1fr); }
+.thumb { position: relative; display: block; width: 128px; aspect-ratio: 16 / 9; max-width: 100%; overflow: hidden; align-self: start; background: var(--ink); box-shadow: 3px 3px 0 var(--line); transition: transform .15s ease; }
+.thumb:hover { transform: translate(-1px, -2px); }
+.thumb img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.thumb .play { position: absolute; left: 50%; top: 50%; width: 30px; height: 22px; transform: translate(-50%, -50%); background: var(--box); border-radius: 5px; }
+.thumb .play::after { content: ""; position: absolute; left: 12px; top: 6px; border-left: 9px solid var(--on-box); border-top: 5px solid transparent; border-bottom: 5px solid transparent; }
+
 @media (max-width: 600px) {
+  .video { grid-template-columns: 96px minmax(0, 1fr); }
+  .thumb { width: 96px; }
   .book { grid-template-columns: 52px minmax(0, 1fr); gap: 14px; }
   .cover { width: 52px; }
   .book-top { flex-direction: column; gap: 0; }
@@ -234,6 +244,7 @@ ol.timeline .when { font-size: 12px; color: var(--box); font-variant-numeric: ta
       <a href="#home" aria-current="page">home</a><span class="sep">/</span>
       <a href="#writing">writing</a><span class="sep">/</span>
       <a href="#reading">reading</a><span class="sep">/</span>
+      <a href="#watching">watching</a><span class="sep">/</span>
       <a href="#about">about</a>
     </nav>
   </header>
@@ -360,6 +371,24 @@ ol.timeline .when { font-size: 12px; color: var(--box); font-variant-numeric: ta
           <div class="by">Ben Horowitz · 2014</div>
           <p class="d">No recipes, just what it feels like when things go wrong and you're the one who has to decide. The chapters on layoffs, hiring executives and “the struggle” are the ones I go back to.</p>
           <a class="buy" href="https://www.amazon.com/s?k=The+Hard+Thing+About+Hard+Things+Ben+Horowitz" target="_blank" rel="noopener">on amazon ↗</a>
+        </div>
+      </li>
+    </ul>
+  </section>
+
+  <section class="sec" id="watching" aria-labelledby="h-watching">
+    <div class="sec-head"><h2 id="h-watching"><span>05</span> watching</h2><span class="muted" style="font-size:12px">videos I recommend</span></div>
+    <ul class="books videos">
+      <li class="book video">
+        <a class="thumb" href="https://www.youtube.com/watch?v=0bgr0KjMijQ" target="_blank" rel="noopener" aria-hidden="true" tabindex="-1">
+          <img src="https://i.ytimg.com/vi/0bgr0KjMijQ/hqdefault.jpg" alt="" width="480" height="360" loading="lazy" onerror="this.remove()">
+          <span class="play"></span>
+        </a>
+        <div class="book-body">
+          <div class="book-top"><a class="t link" href="https://www.youtube.com/watch?v=0bgr0KjMijQ" target="_blank" rel="noopener">The crazy ones</a><span class="date">from jOBS (2013)</span></div>
+          <div class="by">Scene from the film jOBS · YouTube</div>
+          <p class="d">Steve Jobs reading the "crazy ones" lines to his team. It's the idea my sister and I keep coming back to: the people who changed the world were no different from you, so you're free to push it forward too.</p>
+          <a class="buy" href="https://www.youtube.com/watch?v=0bgr0KjMijQ" target="_blank" rel="noopener">on youtube ↗</a>
         </div>
       </li>
     </ul>
