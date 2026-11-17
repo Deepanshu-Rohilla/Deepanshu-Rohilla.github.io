@@ -193,6 +193,9 @@ ol.timeline .when { font-size: 12px; color: var(--box); font-variant-numeric: ta
 .cover { display: block; width: 64px; align-self: start; box-shadow: 3px 3px 0 var(--line); transition: transform .15s ease; }
 .cover:hover { transform: translate(-1px, -2px); }
 .cover img { display: block; width: 100%; height: auto; }
+.cover-text { aspect-ratio: 2 / 3; max-width: 100%; background: var(--box); color: var(--on-box); display: flex; flex-direction: column; justify-content: space-between; padding: 8px 7px; }
+.cover-text .ct { font-family: var(--serif); font-size: 22px; line-height: 1; }
+.cover-text .cb { font-size: 8.5px; line-height: 10px; letter-spacing: 0.04em; text-transform: uppercase; }
 .book-body { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
 .book-top { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; }
 .book .t { font-family: var(--serif); font-size: 21px; line-height: 26px; border-bottom: 0; }
@@ -342,6 +345,15 @@ ol.timeline .when { font-size: 12px; color: var(--box); font-variant-numeric: ta
   <section class="sec" id="reading" aria-labelledby="h-reading">
     <div class="sec-head"><h2 id="h-reading"><span>04</span> reading</h2><span class="muted" style="font-size:12px">books I recommend</span></div>
     <ul class="books">
+      <li class="book">
+        <a class="cover cover-text" href="https://patrickcollison.com/fast" target="_blank" rel="noopener" aria-hidden="true" tabindex="-1"><span class="ct">Fast</span><span class="cb">Patrick Collison</span></a>
+        <div class="book-body">
+          <div class="book-top"><a class="t link" href="https://patrickcollison.com/fast" target="_blank" rel="noopener">Fast</a><span class="date">online</span></div>
+          <div class="by">Patrick Collison · patrickcollison.com</div>
+          <p class="d">A list of ambitious projects that got done remarkably quickly: Apollo 8 went from decision to launch in 134 days, and the first JavaScript prototype took 10. It also asks why big physical projects got so much slower after 1970. A good reminder of what a small, focused team can do.</p>
+          <a class="buy" href="https://patrickcollison.com/fast" target="_blank" rel="noopener">read online ↗</a>
+        </div>
+      </li>
       <li class="book">
         <a class="cover" href="https://www.amazon.com/s?k=Apple+in+China+Patrick+McGee" target="_blank" rel="noopener" aria-hidden="true" tabindex="-1"><img src="img/book-apple.jpg" alt="" width="159" height="240" loading="lazy"></a>
         <div class="book-body">
