@@ -209,6 +209,8 @@ ol.timeline .when { font-size: 12px; color: var(--box); font-variant-numeric: ta
 .fig.wide { align-self: stretch; }
 .note-fig { max-width: 560px; }
 .prose ol.peeves { gap: 12px; }
+.prose ul.facts { margin: 0; padding-left: 1.2em; display: flex; flex-direction: column; gap: 10px; max-width: 66ch; }
+.prose ul.facts li::marker { color: var(--box); }
 .logic { font-family: var(--serif); font-size: 17px; white-space: nowrap; }
 .prose ol.peeves li::marker { color: var(--box); font-size: 13px; }
 .fig.wide img { width: 100%; }
@@ -326,8 +328,12 @@ ol.timeline .when { font-size: 12px; color: var(--box); font-variant-numeric: ta
     <div class="year">
       <div class="yr-label">2026</div>
       <ul class="posts">
+        <li><a href="#manifestation">
+          <span class="t">Manifestation to reality can be engineered<span class="new">new</span></span><span class="date">Nov 2026</span>
+          <span class="d">BCI turns thought into text, robots turn text into action. Put them together and you move atoms just by thinking.</span>
+        </a></li>
         <li><a href="#pet-peeves">
-          <span class="t">List of my pet peeves<span class="new">new</span></span><span class="date">Nov 2026</span>
+          <span class="t">List of my pet peeves</span><span class="date">Nov 2026</span>
           <span class="d">An ongoing list. So far: overusing &ldquo;dhandha&rdquo;, poor debating skills and over-explaining.</span>
         </a></li>
         <li><a href="#self-note">
@@ -490,6 +496,44 @@ ol.timeline .when { font-size: 12px; color: var(--box); font-variant-numeric: ta
       <h2>3. Over-explaining something</h2>
       <p>In general, non-crisp conversations are a pet peeve of mine. YC can judge you in 10 minutes, so answer crisply. Here's <a class="link" href="https://medium.com/lessons-from-mckinsey/the-pyramid-principle-f0885dd3c5c7" target="_blank" rel="noopener">an article on how to do it</a>, using the Pyramid Principle.</p>
       <p class="muted small">More to come.</p>
+    </div>
+
+    <a class="back link" href="#writing">← all writing</a>
+  </article>
+
+  <article class="post-view" id="manifestation" aria-labelledby="manifestation-title" hidden>
+    <a class="back link" href="#writing">← all writing</a>
+
+    <header class="post-head">
+      <p class="kicker">essay · bci + robotics</p>
+      <h1 id="manifestation-title">Manifestation to reality can be engineered</h1>
+      <p class="byline">Deepanshu Rohilla · November 2026 · 3 min read</p>
+    </header>
+
+    <div class="prose">
+      <p class="lede">With BCI and robotics advancing simultaneously, manifestation will soon be engineered.</p>
+      <p>Imagine having toast for breakfast. BCI builds the thought-to-agent pipeline. Robotics does the physical labour (prompt-to-labour). All you need is an accurate BCI product and a humanoid in your house.</p>
+      <p>This is effectively manipulating the world around you at will. Think about it for a second: this feels pretty much doable in the next few years. What a time to be alive.</p>
+      <p>Here's a deep-dive on what's possible today, what will be unlocked soon and when to expect this in your house.</p>
+
+      <h2>A. What's possible today</h2>
+
+      <h3>A1. BCI: thought to text</h3>
+      <p>Think of it as a classification problem: how many things (call it <span class="logic">x</span>) can a BCI tell apart from your thoughts, and how reliably? Today the answer depends on whether you are willing to get an implant.</p>
+      <ul class="facts">
+        <li><strong>With an implant, x is basically the whole dictionary.</strong> A UC Davis / BrainGate participant with ALS used a speech BCI at home for more than 3,800 hours. In structured testing, word accuracy was above 99% from a vocabulary of over 125,000 words, and he averaged 56 words per minute in daily use. (<a class="link" href="https://www.natureasia.com/en/info/press-releases/detail/9358" target="_blank" rel="noopener">Nature Medicine, June 2026</a>)</li>
+        <li><strong>Without surgery, x is still small.</strong> Meta's Brain2Qwerty v2 decodes typed sentences from MEG with 61% word accuracy on average (78% for the best participant), but it needs a room-sized scanner. (<a class="link" href="https://ai.meta.com/blog/brain2qwerty-brain-ai-human-communication/" target="_blank" rel="noopener">Meta, June 2026</a>) With a regular EEG headset, picking the right one of just four imagined objects is still under 50%.</li>
+      </ul>
+      <p>That means, with an implant, I can think of an object and an action, out of thousands of each, and the BCI gets it right. Without one, x shrinks to a handful.</p>
+
+      <h3>A2. Robotics: prompt to action</h3>
+      <p>&ldquo;Pick anything&rdquo; is getting solved. <a class="link" href="https://ok-robot.github.io" target="_blank" rel="noopener">OK-Robot</a> by Mahi Shafiullah, Lerrel Pinto and team at NYU picks up and drops objects from a plain language prompt, with zero training in the home. It got 58.5% of pick-and-drops right across 10 unseen homes, and 82.4% in decluttered ones.</p>
+      <p>And the two have already met: Neuralink trial participants are <a class="link" href="https://www.beckershospitalreview.com/healthcare-information-technology/innovation/elon-musks-neuralink-patients-control-robotic-arms-with-brain" target="_blank" rel="noopener">controlling assistive robotic arms with their thoughts</a>.</p>
+      <p>So, effectively, you can think of an object kept on a table in front of you, and just by thinking, a robot can pick it up and put it somewhere. This can be done today!</p>
+
+      <h2>B. Things to be solved</h2>
+      <p>Thankfully, these two advancements are not interdependent. Robotics can keep working on prompt-to-action while BCI tackles the thought-to-text bit.</p>
+      <p>I think BCI is what truly makes it sci-fi. Prompt-to-action &ldquo;feels&rdquo; solved to roboticists. That would be pretty cool in itself, but BCI makes it so much better. You are effectively manipulating atoms around you just by thinking.</p>
     </div>
 
     <a class="back link" href="#writing">← all writing</a>
