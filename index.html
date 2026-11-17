@@ -205,6 +205,8 @@ ol.timeline .when { font-size: 12px; color: var(--box); font-variant-numeric: ta
 
 .fig.wide { align-self: stretch; }
 .note-fig { max-width: 560px; }
+.prose ol.peeves { gap: 12px; }
+.prose ol.peeves li::marker { color: var(--box); font-size: 13px; }
 .fig.wide img { width: 100%; }
 .prose blockquote { margin: 4px 0; padding: 4px 0 4px 16px; border-left: 2px solid var(--box); font-family: var(--serif); font-size: 23px; line-height: 30px; max-width: 60ch; }
 
@@ -320,6 +322,10 @@ ol.timeline .when { font-size: 12px; color: var(--box); font-variant-numeric: ta
     <div class="year">
       <div class="yr-label">2026</div>
       <ul class="posts">
+        <li><a href="#pet-peeves">
+          <span class="t">List of my pet peeves<span class="new">new</span></span><span class="date">Nov 2026</span>
+          <span class="d">An ongoing list. First up: the overuse of the word &ldquo;dhandha&rdquo;.</span>
+        </a></li>
         <li><a href="#self-note">
           <span class="t">A personal self note</span><span class="date">Oct 2026</span>
           <span class="d">Kobe Bryant's post from the night he tore his Achilles.</span>
@@ -434,6 +440,30 @@ ol.timeline .when { font-size: 12px; color: var(--box); font-variant-numeric: ta
         <img src="img/self-note.jpg" alt="Kobe Bryant's Facebook post from April 13, 2013, written the night he tore his Achilles, ending with 'Mamba Out'" width="1080" height="1350" loading="lazy">
         <figcaption>Kobe Bryant, Facebook, April 13, 2013.</figcaption>
       </figure>
+    </div>
+
+    <a class="back link" href="#writing">← all writing</a>
+  </article>
+
+  <article class="post-view" id="pet-peeves" aria-labelledby="pet-peeves-title" hidden>
+    <a class="back link" href="#writing">← all writing</a>
+
+    <header class="post-head">
+      <p class="kicker">note · ongoing list</p>
+      <h1 id="pet-peeves-title">List of my pet peeves</h1>
+      <p class="byline">Deepanshu Rohilla · November 2026 · 1 min read</p>
+    </header>
+
+    <div class="prose">
+      <h2>1. Overuse of the word &ldquo;Dhandha&rdquo;</h2>
+      <p class="muted">Dhandha translates to &ldquo;business&rdquo;.</p>
+      <p>People use the word dhandha in one of the following ways:</p>
+      <ol class="peeves" type="a">
+        <li><strong>To justify any shady or otherwise weird business habit.</strong> E.g.: <em>&ldquo;Dhandhe mein ye sab karna padta hai&rdquo;</em> (Translation: You have to do all this in a business). They bring dhandha into their vocabulary specifically when talking about shady work (bribing, cheating, etc.).</li>
+        <li><strong>To talk about margins in an early-stage startup.</strong> E.g.: <em>&ldquo;Dhandhe mein bachta kitna hai?&rdquo;</em> Whenever you are in this convo, just run. It is most likely useless.</li>
+        <li><strong>To sound cool.</strong> I guess Ashneer Grover had a role to play. The speaker (usually a young teenager) uses dhandha to give off a pragmatic, experienced businessman vibe.</li>
+      </ol>
+      <p class="muted small">More to come.</p>
     </div>
 
     <a class="back link" href="#writing">← all writing</a>
