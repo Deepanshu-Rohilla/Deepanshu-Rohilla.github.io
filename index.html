@@ -211,6 +211,9 @@ ol.timeline .when { font-size: 12px; color: var(--box); font-variant-numeric: ta
 .prose ol.peeves { gap: 12px; }
 .prose ul.facts { margin: 0; padding-left: 1.2em; display: flex; flex-direction: column; gap: 10px; max-width: 66ch; }
 .prose ul.facts li::marker { color: var(--box); }
+.thanks { font-size: 12.5px; color: var(--ink-2); font-style: italic; max-width: 62ch; }
+.prose ul.small-facts { font-size: 13px; line-height: 21px; gap: 6px; }
+.prose .closer { font-family: var(--serif); font-size: 24px; line-height: 31px; margin-top: 12px; text-wrap: balance; }
 .logic { font-family: var(--serif); font-size: 17px; white-space: nowrap; }
 .prose ol.peeves li::marker { color: var(--box); font-size: 13px; }
 .fig.wide img { width: 100%; }
@@ -505,11 +508,14 @@ ol.timeline .when { font-size: 12px; color: var(--box); font-variant-numeric: ta
     <header class="post-head">
       <p class="kicker">essay · bci + robotics</p>
       <h1 id="manifestation-title">Manifestation to reality can be engineered</h1>
-      <p class="byline">Deepanshu Rohilla · November 2026 · 3 min read</p>
+      <p class="byline">Deepanshu Rohilla · November 2026 · 4 min read</p>
+      <p class="thanks">Thanks to Rahul Chhabra (CEO, Sabi), Adhiraj Goel (MTS, Merge Labs) and Anshu Arora (MS, Stanford) for their edits.</p>
     </header>
 
     <div class="prose">
       <p class="lede">With BCI and robotics advancing simultaneously, manifestation will soon be engineered.</p>
+      <p>Every leap so far has made things a little more convenient. Take travel: first we walked, then people carried us, then animals did, then we drove cars, and now cars drive themselves.</p>
+      <p>Getting things done in the world has followed the same path. First we asked people, then we read books, then we googled (typing), then we asked an LLM (typing), then we Wispr Flowed it (speaking). Next, we simply think.</p>
       <p>Imagine just thinking of having a toast for breakfast. BCI builds the thought-to-text pipeline. Robotics does the physical labour (prompt-to-labour). All you need is an accurate BCI product and a humanoid in your house.</p>
       <p>This is effectively manipulating the world around you at will. Think about it for a second: this feels pretty much doable in the next few years. What a time to be alive!!!</p>
 
@@ -519,9 +525,9 @@ ol.timeline .when { font-size: 12px; color: var(--box); font-variant-numeric: ta
       <p>Think of it as a classification problem: how many things (call it <span class="logic">x</span>) can a BCI tell apart from your thoughts, and how reliably? Today the answer depends on whether you are willing to get an implant.</p>
       <ul class="facts">
         <li><strong>With an implant, x is basically the whole dictionary.</strong> A UC Davis / BrainGate participant with ALS used a speech BCI at home for more than 3,800 hours. In structured testing, word accuracy was above 99% from a vocabulary of over 125,000 words, and he averaged 56 words per minute in daily use. (<a class="link" href="https://www.natureasia.com/en/info/press-releases/detail/9358" target="_blank" rel="noopener">Nature Medicine, June 2026</a>)</li>
-        <li><strong>Without surgery, x is still small.</strong> Meta's Brain2Qwerty v2 decodes typed sentences from MEG with 61% word accuracy on average (78% for the best participant), but it needs a room-sized scanner. (<a class="link" href="https://ai.meta.com/blog/brain2qwerty-brain-ai-human-communication/" target="_blank" rel="noopener">Meta, June 2026</a>) With a regular EEG headset, picking the right one of just four imagined objects is still under 50%.</li>
+        <li><strong>Without surgery, x is smaller, but catching up fast.</strong> Meta's Brain2Qwerty v2 decodes typed sentences from MEG with 61% word accuracy on average (78% for the best participant), but it needs a room-sized scanner. (<a class="link" href="https://ai.meta.com/blog/brain2qwerty-brain-ai-human-communication/" target="_blank" rel="noopener">Meta, June 2026</a>) <a class="link" href="https://finance.yahoo.com/technology/ai/articles/sabi-raises-50-million-seed-173000665.html" target="_blank" rel="noopener">Sabi</a> is putting it in a baseball cap: custom EEG sensors and a brain foundation model trained on more than 100,000 hours of labeled neural recordings, turning imagined speech into commands for AI. An early prototype debuts at CES 2027.</li>
       </ul>
-      <p>That means, with an implant, I can think of an object and an action, out of thousands of each, and the BCI gets it right. Without one, x shrinks to a handful.</p>
+      <p>That means, with an implant, I can think of an object and an action, out of thousands of each, and the BCI gets it right. Without one, x is smaller today, but not for long.</p>
 
       <h3>Robotics: prompt to action</h3>
       <p>&ldquo;Pick anything&rdquo; is getting solved. Mahi Shafiullah, with the Amazon FAR Dex Hands team and Jitendra Malik, just showed <a class="link" href="https://x.com/JitendraMalikCV/status/2119244528058249324" target="_blank" rel="noopener">Pick Anything</a>: a single policy that does human-like grasps on 66 different objects, from AirPods to pipe wrenches. It was trained on human videos and reinforcement learning, with no teleoperation data. His earlier <a class="link" href="https://ok-robot.github.io" target="_blank" rel="noopener">OK-Robot</a> already did zero-shot pick-and-drop from a plain language prompt in 10 homes it had never seen.</p>
@@ -531,6 +537,18 @@ ol.timeline .when { font-size: 12px; color: var(--box); font-variant-numeric: ta
       <h2>My thoughts</h2>
       <p>Thankfully, these two advancements are not interdependent. Robotics can keep working on prompt-to-action while BCI tackles the thought-to-text bit.</p>
       <p>I think BCI is what truly makes it sci-fi. Prompt-to-action &ldquo;feels&rdquo; solved to roboticists. That would be pretty cool in itself, but BCI makes it so much better. You are effectively manipulating atoms around you just by thinking.</p>
+      <p>And the pipeline itself might disappear. Today it's thought &rarr; text &rarr; robot. If BCI gets good enough at thought-to-action, we skip the prompt entirely: thought goes straight to the robot.</p>
+      <p>Reading from the brain is only half of it. The bigger unlock is writing to it. Imagine humanoid personas that go out, interact with each other, and write what they learned straight into your memory. Writing has already started: a 2026 study <a class="link" href="https://www.cs.ucsb.edu/happenings/announcement/ai-closed-loop-vision-implant-study-co-led-ucsb" target="_blank" rel="noopener">used AI to design stimulation patterns</a> for an implant in a blind participant's visual cortex. It's much harder than reading, because the brain doesn't keep data and computation on separate tracks the way a computer does. Memory and compute live in the same neurons, so there is no clean address to write to.</p>
+
+      <h3>Still hard</h3>
+      <ul class="facts small-facts">
+        <li><strong>Signal drift.</strong> A fixed implant like a Utah array records slightly different neurons over time, so decoders degrade. There are really interesting algorithms tackling this, like <a class="link" href="https://www.nature.com/articles/s41551-020-0542-9" target="_blank" rel="noopener">manifold alignment</a> and <a class="link" href="https://pubmed.ncbi.nlm.nih.gov/40389429/" target="_blank" rel="noopener">NoMAD</a>.</li>
+        <li><strong>Batteries and power</strong> for something that lives in your head.</li>
+        <li><strong>Neuron plasticity.</strong> The brain keeps rewiring around the device.</li>
+        <li><strong>Communicating reliably and safely</strong>, in both directions.</li>
+      </ul>
+
+      <p class="closer">The entire physical world, in all its glory, is just one thought away!!!</p>
     </div>
 
     <a class="back link" href="#writing">← all writing</a>
